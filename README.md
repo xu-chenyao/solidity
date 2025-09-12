@@ -31,6 +31,6 @@ npx hardhat clean && npx hardhat compile && npm run deploy:task2:sepolia
 #将 MyToken.sol 合约及其所有依赖的 import 文件合并到一个文件中
 npx hardhat flatten contracts/task2/MyToken.sol > MyToken_flattened.sol
 #合约验证/手动验证
-npx hardhat verify --network sepolia 0xcc8Ac090eC6Ad24DBE8d5cBf7536c196e07ac7fF "MyToken" "MTK" 18 1000000
+npx hardhat verify --network sepolia 0x0A81015f205D4cBA59BA7996a9ce4362c2bfD5f0 "MyToken" "MTK" 18 1000000
 
 ```
