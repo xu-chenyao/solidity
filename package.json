@@ -1,0 +1,49 @@
+{
+  "name": "solidity-learning-project",
+  "version": "1.0.0",
+  "description": "Solidity智能合约学习项目 - Task1算法合约 + Task2 ERC20代币",
+  "main": "index.js",
+  "scripts": {
+    "compile": "hardhat compile",
+    "test": "hardhat test",
+    "test:task1": "hardhat test test/task1/AllContracts.test.js",
+    "test:task2": "hardhat test test/task2/MyToken.test.js",
+    "test:all": "hardhat test test/task1/ test/task2/",
+    "demo": "hardhat run scripts/demo.js",
+    "demo:sepolia": "hardhat run scripts/demo.js --network sepolia",
+    "demo:task2": "hardhat run scripts/task2/demo.js",
+    "demo:task2:sepolia": "hardhat run scripts/task2/demo.js --network sepolia",
+    "deploy:task2": "hardhat run scripts/task2/deploy.js",
+    "deploy:task2:sepolia": "hardhat run scripts/task2/deploy.js --network sepolia",
+    "task2:full": "hardhat run scripts/task2/test-and-deploy.js",
+    "task2:full:sepolia": "hardhat run scripts/task2/test-and-deploy.js --network sepolia",
+    "node": "hardhat node",
+    "console": "hardhat console",
+    "clean": "hardhat clean",
+    "coverage": "hardhat coverage",
+    "size": "hardhat size-contracts",
+    "deploy:ignition": "hardhat ignition deploy ignition/modules/Lock.js",
+    "verify": "hardhat verify",
+    "lint": "solhint 'contracts/**/*.sol'",
+    "format": "prettier --write 'contracts/**/*.sol'"
+  },
+  "keywords": [
+    "solidity",
+    "ethereum",
+    "smart-contracts",
+    "hardhat",
+    "blockchain",
+    "defi",
+    "erc20",
+    "token"
+  ],
+  "author": "xuchenyao",
+  "license": "MIT",
+  "devDependencies": {
+    "@nomicfoundation/hardhat-toolbox": "^6.1.0",
+    "@nomiclabs/hardhat-etherscan": "^3.1.8",
+    "@nomiclabs/hardhat-solhint": "^4.1.0",
+    "dotenv": "^17.2.2",
+    "hardhat": "^2.26.3"
+  }
+}

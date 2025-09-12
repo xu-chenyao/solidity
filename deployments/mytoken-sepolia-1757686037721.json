@@ -1,0 +1,16 @@
+{
+  "network": "sepolia",
+  "chainId": "11155111",
+  "contractAddress": "0x0A81015f205D4cBA59BA7996a9ce4362c2bfD5f0",
+  "deployerAddress": "0x30408B701DC00eDEE3487a05c794f8cfD1432825",
+  "deploymentTime": "2025-09-12T14:07:17.263Z",
+  "transactionHash": "0x93f3dc1dfc3ba0525a0e507c82be9a1fa26f0dc64dba1eafad77bfc9f0577df2",
+  "blockNumber": 9188585,
+  "tokenConfig": {
+    "name": "MyToken",
+    "symbol": "MTK",
+    "decimals": 18,
+    "initialSupply": 1000000
+  },
+  "gasUsed": "1101330"
+}
