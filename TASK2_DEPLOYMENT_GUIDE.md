@@ -2,14 +2,6 @@
 
 ## 📋 项目完成状态
 
-✅ **已完成的内容**：
-- [x] ERC20代币合约实现 (`contracts/task2/MyToken.sol`)
-- [x] 完整测试套件 (`test/task2/MyToken.test.js`)
-- [x] 部署脚本 (`scripts/task2/deploy.js`)
-- [x] 功能演示脚本 (`scripts/task2/demo.js`)
-- [x] 综合测试脚本 (`scripts/task2/test-and-deploy.js`)
-- [x] 详细文档 (`contracts/task2/README.md`)
-
 ## 🎯 本地测试
 
 ### 1. 编译合约
@@ -22,15 +14,10 @@ npm run compile
 # 运行Task2测试
 npm run test:task2
 
-# 运行所有测试
-npm run test:all
 ```
 
 ### 3. 本地部署和演示
 ```bash
-# 完整功能测试和部署
-npm run task2:full
-
 # 功能演示
 npm run demo:task2
 
@@ -64,12 +51,6 @@ ETHERSCAN_API_KEY=your_etherscan_api_key
 ### 3. 部署到Sepolia
 
 ```bash
-# 完整测试和部署
-npm run task2:full:sepolia
-
-# 功能演示
-npm run demo:task2:sepolia
-
 # 单独部署
 npm run deploy:task2:sepolia
 ```
@@ -197,6 +178,9 @@ npm run clean && npm run compile
 - [Sepolia测试网信息](https://sepolia.dev/)
 - [MetaMask使用指南](https://metamask.io/faqs/)
 - [Hardhat文档](https://hardhat.org/docs)
+- [Solidity官方文档](https://docs.soliditylang.org/)
+- [OpenZeppelin合约库](https://docs.openzeppelin.com/contracts/)
+- [Ethers.js文档](https://docs.ethers.org/)
 
 ## 📞 技术支持
 
@@ -207,5 +191,3 @@ npm run clean && npm run compile
 4. 查阅相关文档
 
 ---
-
-**恭喜！🎉 你已经完成了一个完整的ERC20代币项目！**
