@@ -24,6 +24,8 @@
     "size": "hardhat size-contracts",
     "deploy:ignition": "hardhat ignition deploy ignition/modules/Lock.js",
     "verify": "hardhat verify",
+    "interact:task2": "hardhat run scripts/task2/interact.js",
+    "interact:task2:sepolia": "hardhat run scripts/task2/interact.js --network sepolia",
     "lint": "solhint 'contracts/**/*.sol'",
     "format": "prettier --write 'contracts/**/*.sol'"
   },

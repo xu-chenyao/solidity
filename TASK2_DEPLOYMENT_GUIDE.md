@@ -53,6 +53,10 @@ ETHERSCAN_API_KEY=your_etherscan_api_key
 ```bash
 # 单独部署
 npm run deploy:task2:sepolia
+#手动验证，将 MyToken.sol 合约及其所有依赖的 import 文件合并到一个文件中
+npx hardhat flatten contracts/task2/MyToken.sol > MyToken_london_0828.sol
+#或者合约验证
+npx hardhat verify --network sepolia 0x0A81015f205D4cBA59BA7996a9ce4362c2bfD5f0 "MyToken" "MTK" 18 1000000
 ```
 
 ### 4. 验证部署
