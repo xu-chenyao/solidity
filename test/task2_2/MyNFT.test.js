@@ -20,8 +20,8 @@ describe("MyNFT Contract", function () {
     let addrs;
 
     // 测试用的IPFS链接（模拟数据）
-    const sampleTokenURI = "ipfs://bafybeieztx2mprr2ifd3tuzq5ms3mzyjtsfosci7z56l2czkxsypqoasqa/metadata.json";
-    const sampleTokenURI2 = "ipfs://bafybeibd2oaexezeug3ysfunq36lo45zrg6zjfql7ccetm7sxrpsjr6bti/metadata2.json";
+    const sampleTokenURI = "ipfs://bafybeihxwrls2uzs2xnn77rwcqpetfe6ethnqkdkmcbk6xok3bxztvhmta/xcy1.json";
+    const sampleTokenURI2 = "ipfs://bafybeihxwrls2uzs2xnn77rwcqpetfe6ethnqkdkmcbk6xok3bxztvhmta/xcy2.json";
     
     // 测试用的NFT元数据示例
     // const sampleMetadata = {

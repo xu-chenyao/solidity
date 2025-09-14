@@ -187,7 +187,7 @@ async function main() {
     
     // 查询最近的Transfer事件
     const transferFilter = myToken.filters.Transfer();
-    const transferEvents = await myToken.queryFilter(transferFilter, -2); // 最近2个区块
+    const transferEvents = await myToken.queryFilter(transferFilter, -2); 
     
     console.log(`📝 最近的Transfer事件 (${transferEvents.length}个):`);
     transferEvents.slice(-3).forEach((event, index) => {
