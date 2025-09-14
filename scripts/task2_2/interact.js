@@ -24,9 +24,8 @@ const CONFIG = {
     
     // 示例IPFS链接 - 请替换为实际的IPFS链接
     SAMPLE_METADATA_URIS: [
-        "ipfs://bafybeifzgfc2vp6kxlre7yl3uuzetiwfx37bynx5wdae7rvcl2jcf4dpoy/metadata1.json",
-        // "ipfs://bafybeieztx2mprr2ifd3tuzq5ms3mzyjtsfosci7z56l2czkxsypqoasqa/metadata.json",
-        "ipfs://bafybeie45lx44fw4nte3ilqg56h5e4gisf3bs3sledflimqqwtotnqcijm/metadata2.json",
+        "ipfs://bafybeihxwrls2uzs2xnn77rwcqpetfe6ethnqkdkmcbk6xok3bxztvhmta/xcy1.json",
+        "ipfs://bafybeihxwrls2uzs2xnn77rwcqpetfe6ethnqkdkmcbk6xok3bxztvhmta/xcy2.json",
         // "ipfs://QmYourHashHere/metadata3.json"
     ],
     
@@ -438,15 +437,15 @@ async function main() {
         console.log(`\n👥 NFT接收者: ${recipients.join(", ")}`);
         
         // // 演示1: 铸造单个NFT
-        // console.log("\n" + "=".repeat(50));
-        // console.log("演示1: 铸造单个NFT");
-        // console.log("=".repeat(50));
+        console.log("\n" + "=".repeat(50));
+        console.log("演示1: 铸造单个NFT");
+        console.log("=".repeat(50));
         
-        // const tokenId1 = await mintSingleNFT(
-        //     contract, 
-        //     recipients[0], 
-        //     CONFIG.SAMPLE_METADATA_URIS[0]
-        // );
+        const tokenId1 = await mintSingleNFT(
+            contract, 
+            recipients[0], 
+            CONFIG.SAMPLE_METADATA_URIS[0]
+        );
     
         
         // 查询刚铸造的NFT信息
