@@ -60,7 +60,7 @@
    {
      "name": "My Awesome NFT #1",
      "description": "这是我的第一个NFT",
-     "image": "ipfs://QmYourImageHash/image.png",
+     "image": "ipfs://QmImageHash/image.png",
      "attributes": [
        {
          "trait_type": "颜色",
@@ -76,7 +76,7 @@
 
 4. **上传元数据到IPFS**
    - 上传JSON文件到IPFS
-   - 获取元数据链接：`ipfs://QmMetadataHash/metadata.json`
+   - 获取元数据链接：`ipfs://QmMetadataHash/image.json`
 
 ### 第四步：测试网部署
 
