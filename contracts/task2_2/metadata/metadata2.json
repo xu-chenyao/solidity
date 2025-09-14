@@ -1,0 +1,15 @@
+{
+    "name": "My Awesome NFT #2",
+    "description": "这是我的第二个NFT",
+    "image": "ipfs://bafkreihgz3a5urmjlxqhbyqdx6vzb2p2ampxunetwgbubvrx2vr2k56dn4",
+    "attributes": [
+      {
+        "trait_type": "颜色",
+        "value": "蓝色1"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "传奇1"
+      }
+    ]
+  }

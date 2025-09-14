@@ -1,0 +1,13 @@
+{
+  "network": "sepolia",
+  "chainId": "11155111",
+  "contractAddress": "0xdC6AB07eBcDE92A6387a4b57C032143786cD2a92",
+  "contractName": "MyNFT",
+  "deployer": "0x30408B701DC00eDEE3487a05c794f8cfD1432825",
+  "deploymentTime": "2025-09-14T01:16:03.085Z",
+  "transactionHash": "0xb2d82b186542eb42f1eca8fd35accd9b7552f7c074ebdf6e54a750cb9b05cdf9",
+  "gasUsed": "1669510",
+  "nftName": "MyAwesome NFT Collection",
+  "nftSymbol": "MANFT",
+  "blockNumber": 9198737
+}

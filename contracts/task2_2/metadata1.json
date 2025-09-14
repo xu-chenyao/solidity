@@ -1,0 +1,15 @@
+{
+    "name": "My Awesome NFT #1",
+    "description": "这是我的第一个NFT",
+    "image": "ipfs://bafkreien62jjc5gwwpxrueg263ppn56dhgs3iwqrvbkcsj5pf4tqq4xxlm",
+    "attributes": [
+      {
+        "trait_type": "颜色",
+        "value": "蓝色"
+      },
+      {
+        "trait_type": "稀有度",
+        "value": "传奇"
+      }
+    ]
+  }

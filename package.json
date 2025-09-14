@@ -8,13 +8,16 @@
     "test": "hardhat test",
     "test:task1": "hardhat test test/task1/AllContracts.test.js",
     "test:task2": "hardhat test test/task2/MyToken.test.js",
-    "test:all": "hardhat test test/task1/ test/task2/",
+    "test:task2_2": "hardhat test test/task2_2/MyNFT.test.js",
+    "test:all": "hardhat test test/task1/ test/task2/ test/task2_2/",
     "demo": "hardhat run scripts/demo.js",
     "demo:sepolia": "hardhat run scripts/demo.js --network sepolia",
     "demo:task2": "hardhat run scripts/task2/demo.js",
     "demo:task2:sepolia": "hardhat run scripts/task2/demo.js --network sepolia",
     "deploy:task2": "hardhat run scripts/task2/deploy.js",
     "deploy:task2:sepolia": "hardhat run scripts/task2/deploy.js --network sepolia",
+    "deploy:task2_2": "hardhat run scripts/task2_2/deploy.js",
+    "deploy:task2_2:sepolia": "hardhat run scripts/task2_2/deploy.js --network sepolia",
     "task2:full": "hardhat run scripts/task2/test-and-deploy.js",
     "task2:full:sepolia": "hardhat run scripts/task2/test-and-deploy.js --network sepolia",
     "node": "hardhat node",
@@ -26,6 +29,8 @@
     "verify": "hardhat verify",
     "interact:task2": "hardhat run scripts/task2/interact.js",
     "interact:task2:sepolia": "hardhat run scripts/task2/interact.js --network sepolia",
+    "interact:task2_2": "hardhat run scripts/task2_2/interact.js",
+    "interact:task2_2:sepolia": "hardhat run scripts/task2_2/interact.js --network sepolia",
     "lint": "solhint 'contracts/**/*.sol'",
     "format": "prettier --write 'contracts/**/*.sol'"
   },
@@ -47,5 +52,8 @@
     "@nomiclabs/hardhat-solhint": "^4.1.0",
     "dotenv": "^17.2.2",
     "hardhat": "^2.26.3"
+  },
+  "dependencies": {
+    "@openzeppelin/contracts": "^5.4.0"
   }
 }
