@@ -9,7 +9,8 @@
     "test:task1": "hardhat test test/task1/AllContracts.test.js",
     "test:task2": "hardhat test test/task2/MyToken.test.js",
     "test:task2_2": "hardhat test test/task2_2/MyNFT.test.js",
-    "test:all": "hardhat test test/task1/ test/task2/ test/task2_2/",
+    "test:task2_3": "hardhat test test/task2_3/BeggingContract.test.js",
+    "test:all": "hardhat test test/task1/ test/task2/ test/task2_2/ test/task2_3/",
     "demo": "hardhat run scripts/demo.js",
     "demo:sepolia": "hardhat run scripts/demo.js --network sepolia",
     "demo:task2": "hardhat run scripts/task2/demo.js",
@@ -18,6 +19,8 @@
     "deploy:task2:sepolia": "hardhat run scripts/task2/deploy.js --network sepolia",
     "deploy:task2_2": "hardhat run scripts/task2_2/deploy.js",
     "deploy:task2_2:sepolia": "hardhat run scripts/task2_2/deploy.js --network sepolia",
+    "deploy:task2_3": "hardhat run scripts/task2_3/deploy.js",
+    "deploy:task2_3:sepolia": "hardhat run scripts/task2_3/deploy.js --network sepolia",
     "task2:full": "hardhat run scripts/task2/test-and-deploy.js",
     "task2:full:sepolia": "hardhat run scripts/task2/test-and-deploy.js --network sepolia",
     "node": "hardhat node",
@@ -31,6 +34,8 @@
     "interact:task2:sepolia": "hardhat run scripts/task2/interact.js --network sepolia",
     "interact:task2_2": "hardhat run scripts/task2_2/interact.js",
     "interact:task2_2:sepolia": "hardhat run scripts/task2_2/interact.js --network sepolia",
+    "interact:task2_3": "hardhat run scripts/task2_3/interact.js",
+    "interact:task2_3:sepolia": "hardhat run scripts/task2_3/interact.js --network sepolia",
     "lint": "solhint 'contracts/**/*.sol'",
     "format": "prettier --write 'contracts/**/*.sol'"
   },
@@ -47,13 +52,31 @@
   "author": "xuchenyao",
   "license": "MIT",
   "devDependencies": {
+    "@nomicfoundation/hardhat-chai-matchers": "^2.1.0",
+    "@nomicfoundation/hardhat-ethers": "^3.1.0",
+    "@nomicfoundation/hardhat-ignition-ethers": "^0.15.14",
+    "@nomicfoundation/hardhat-network-helpers": "^1.1.0",
     "@nomicfoundation/hardhat-toolbox": "^6.1.0",
+    "@nomicfoundation/hardhat-verify": "^2.1.1",
     "@nomiclabs/hardhat-etherscan": "^3.1.8",
     "@nomiclabs/hardhat-solhint": "^4.1.0",
+    "@typechain/ethers-v6": "^0.5.1",
+    "@typechain/hardhat": "^9.1.0",
+    "@types/chai": "^4.3.20",
+    "@types/mocha": "^10.0.10",
     "dotenv": "^17.2.2",
-    "hardhat": "^2.26.3"
+    "ethers": "^6.15.0",
+    "hardhat": "^2.26.3",
+    "hardhat-gas-reporter": "^2.3.0",
+    "solidity-coverage": "^0.8.16",
+    "ts-node": "^10.9.2",
+    "typechain": "^8.3.2",
+    "typescript": "^5.9.2"
   },
   "dependencies": {
-    "@openzeppelin/contracts": "^5.4.0"
+    "@chainlink/contracts": "^1.4.0",
+    "@openzeppelin/contracts": "^5.4.0",
+    "@openzeppelin/contracts-upgradeable": "^5.4.0",
+    "@openzeppelin/hardhat-upgrades": "^3.9.1"
   }
 }

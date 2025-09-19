@@ -169,7 +169,7 @@ contract MyNFT is ERC721, ERC721URIStorage, Ownable {
     function burnNFT(uint256 tokenId) public {
         require(_ownerOf(tokenId) != address(0), "MyNFT: token does not exist");
         
-        address tokenOwner = ownerOf(tokenId);
+        address tokenOwner = _ownerOf(tokenId);
         require(
             msg.sender == tokenOwner || msg.sender == owner(),
             "MyNFT: caller is not owner nor approved"

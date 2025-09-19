@@ -128,7 +128,15 @@ contract BeggingContract is Ownable, ReentrancyGuard {
         uint256 balance = address(this).balance;
         require(balance > 0, "BeggingContract: no funds to withdraw");
         
-        withdraw(balance);
+        // 更新已提取金额
+        totalWithdrawn += balance;
+        
+        // 转账给合约所有者
+        (bool success, ) = payable(owner()).call{value: balance}("");
+        require(success, "BeggingContract: withdrawal failed");
+        
+        // 触发提款事件
+        emit Withdrawal(owner(), balance, block.timestamp);
     }
     
     /**
