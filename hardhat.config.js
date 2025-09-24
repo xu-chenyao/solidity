@@ -42,9 +42,9 @@ module.exports = {
   gasReporter: {
     enabled: true,             // 开启
     showMethodSig: true,       // 方法显示为函数签名
-    currency: "USD",           // 可显示费用（需要价格源）
-    coinmarketcap: process.env.CMC_API_KEY || undefined, // 可选
-    outputFile: "gas-report.txt",
+    // currency: "USD",           // 可显示费用（需要价格源）
+    // coinmarketcap: process.env.CMC_API_KEY || undefined, // 可选
+    // outputFile: "gas-report.txt",
     noColors: true,
     onlyCalledMethods: true,   // 只展示测试里实际被调用的方法
   },
