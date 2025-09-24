@@ -161,6 +161,10 @@ contract FLOKI is IERC20, IGovernanceToken, Ownable {
         tradingLimitExempt[taxHandlerAddress] = true;      // 税收处理器豁免
         tradingLimitExempt[treasuryHandlerAddress] = true; // 国库处理器豁免
 
+        // 🔧 修复：设置国库处理器的投票权委托给自己
+        // 确保税收产生的投票权有明确的归属
+        delegates[treasuryHandlerAddress] = treasuryHandlerAddress;
+
         // 触发转账事件，记录从零地址到部署者的初始铸造
         emit Transfer(address(0), _msgSender(), totalSupply());
     }
