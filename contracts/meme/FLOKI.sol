@@ -433,6 +433,23 @@ contract FLOKI is IERC20, IGovernanceToken, Ownable {
     }
 
     /**
+     * @notice 查询指定账户当前的投票权数量
+     * @param account 要查询的账户地址
+     * @return 该账户当前拥有的投票权数量
+     * 
+     * 功能说明：
+     * - 如果账户没有设置委托，自动查询自己的投票权
+     * - 如果账户设置了委托，查询被委托人的投票权
+     */
+    function getVotes(address account) public view returns (uint224) {
+        // 确定实际的委托人（如果没有设置委托，默认是自己）
+        address delegate = delegates[account] == address(0) ? account : delegates[account];
+        
+        uint32 nCheckpoints = numCheckpoints[delegate];
+        return nCheckpoints > 0 ? checkpoints[delegate][nCheckpoints - 1].votes : 0;
+    }
+
+    /**
      * @notice 查询指定账户在特定区块的投票权数量
      * @dev 区块号必须是已确认的历史区块，否则函数会回滚以防止错误信息
      * @param account 要查询的账户地址
@@ -456,8 +473,11 @@ contract FLOKI is IERC20, IGovernanceToken, Ownable {
             "FLOKI:getVotesAtBlock:FUTURE_BLOCK: Cannot get votes at a block in the future."
         );
 
-        // 获取账户的检查点数量
-        uint32 nCheckpoints = numCheckpoints[account];
+        // 确定实际的委托人（如果没有设置委托，默认是自己）
+        address delegate = delegates[account] == address(0) ? account : delegates[account];
+
+        // 获取委托人的检查点数量
+        uint32 nCheckpoints = numCheckpoints[delegate];
         
         // 如果没有检查点，说明从未有过投票权
         if (nCheckpoints == 0) {
@@ -465,12 +485,12 @@ contract FLOKI is IERC20, IGovernanceToken, Ownable {
         }
 
         // 首先检查最近的余额（如果最近的检查点在目标区块之前或同时）
-        if (checkpoints[account][nCheckpoints - 1].blockNumber <= blockNumber) {
-            return checkpoints[account][nCheckpoints - 1].votes;
+        if (checkpoints[delegate][nCheckpoints - 1].blockNumber <= blockNumber) {
+            return checkpoints[delegate][nCheckpoints - 1].votes;
         }
 
         // 检查隐式的零余额（如果第一个检查点在目标区块之后）
-        if (checkpoints[account][0].blockNumber > blockNumber) {
+        if (checkpoints[delegate][0].blockNumber > blockNumber) {
             return 0;
         }
 
@@ -484,7 +504,7 @@ contract FLOKI is IERC20, IGovernanceToken, Ownable {
             uint32 center = upperBound - (upperBound - lowerBound) / 2;
             
             // 获取中间检查点
-            Checkpoint memory checkpoint = checkpoints[account][center];
+            Checkpoint memory checkpoint = checkpoints[delegate][center];
 
             if (checkpoint.blockNumber == blockNumber) {
                 // 找到精确匹配的区块号
@@ -499,7 +519,7 @@ contract FLOKI is IERC20, IGovernanceToken, Ownable {
         }
 
         // 没有找到精确匹配的区块号，使用该区块号之前的最后一个已知余额
-        return checkpoints[account][lowerBound].votes;
+        return checkpoints[delegate][lowerBound].votes;
     }
 
     // ========== 交易限制检查函数 ==========
@@ -813,7 +833,10 @@ contract FLOKI is IERC20, IGovernanceToken, Ownable {
         _balances[to] += taxedAmount;
         
         // 移动投票权：从转出方的委托人到转入方的委托人
-        _moveDelegates(delegates[from], delegates[to], uint224(taxedAmount));
+        // 如果用户没有设置委托，默认委托给自己
+        address fromDelegate = delegates[from] == address(0) ? from : delegates[from];
+        address toDelegate = delegates[to] == address(0) ? to : delegates[to];
+        _moveDelegates(fromDelegate, toDelegate, uint224(taxedAmount));
 
         // ========== 税收处理 ==========
         
@@ -823,7 +846,9 @@ contract FLOKI is IERC20, IGovernanceToken, Ownable {
             _balances[address(treasuryHandler)] += tax;
 
             // 移动税收部分的投票权到国库处理器
-            _moveDelegates(delegates[from], delegates[address(treasuryHandler)], uint224(tax));
+            // 如果用户没有设置委托，默认委托给自己
+            address fromDelegate = delegates[from] == address(0) ? from : delegates[from];
+            _moveDelegates(fromDelegate, address(treasuryHandler), uint224(tax));
 
             // 触发税收转账事件
             emit Transfer(from, address(treasuryHandler), tax);
