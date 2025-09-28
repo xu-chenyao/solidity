@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity ^0.8.0;
+pragma solidity ^0.8.20;
 
 // 导入OpenZeppelin标准合约
 import "@openzeppelin/contracts/token/ERC721/ERC721.sol";           // ERC721 NFT标准实现

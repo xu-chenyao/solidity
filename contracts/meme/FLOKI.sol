@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.11;
+pragma solidity ^0.8.20;
 
 // 导入OpenZeppelin标准合约
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";    // ERC20代币标准接口
@@ -143,7 +143,7 @@ contract FLOKI is IERC20, IGovernanceToken, Ownable {
         string memory symbol_,            // 代币符号
         address taxHandlerAddress,        // 税收处理器地址
         address treasuryHandlerAddress   // 国库处理器地址
-    ) {
+    ) Ownable(msg.sender) {
         // 设置代币基本信息
         _name = name_;                    // 存储代币名称
         _symbol = symbol_;                // 存储代币符号
@@ -443,10 +443,10 @@ contract FLOKI is IERC20, IGovernanceToken, Ownable {
      */
     function getVotes(address account) public view returns (uint224) {
         // 确定实际的委托人（如果没有设置委托，默认是自己）
-        address delegate = delegates[account] == address(0) ? account : delegates[account];
+        address accountDelegate = delegates[account] == address(0) ? account : delegates[account];
         
-        uint32 nCheckpoints = numCheckpoints[delegate];
-        return nCheckpoints > 0 ? checkpoints[delegate][nCheckpoints - 1].votes : 0;
+        uint32 nCheckpoints = numCheckpoints[accountDelegate];
+        return nCheckpoints > 0 ? checkpoints[accountDelegate][nCheckpoints - 1].votes : 0;
     }
 
     /**
@@ -474,10 +474,10 @@ contract FLOKI is IERC20, IGovernanceToken, Ownable {
         );
 
         // 确定实际的委托人（如果没有设置委托，默认是自己）
-        address delegate = delegates[account] == address(0) ? account : delegates[account];
+        address accountDelegate = delegates[account] == address(0) ? account : delegates[account];
 
         // 获取委托人的检查点数量
-        uint32 nCheckpoints = numCheckpoints[delegate];
+        uint32 nCheckpoints = numCheckpoints[accountDelegate];
         
         // 如果没有检查点，说明从未有过投票权
         if (nCheckpoints == 0) {
@@ -485,12 +485,12 @@ contract FLOKI is IERC20, IGovernanceToken, Ownable {
         }
 
         // 首先检查最近的余额（如果最近的检查点在目标区块之前或同时）
-        if (checkpoints[delegate][nCheckpoints - 1].blockNumber <= blockNumber) {
-            return checkpoints[delegate][nCheckpoints - 1].votes;
+        if (checkpoints[accountDelegate][nCheckpoints - 1].blockNumber <= blockNumber) {
+            return checkpoints[accountDelegate][nCheckpoints - 1].votes;
         }
 
         // 检查隐式的零余额（如果第一个检查点在目标区块之后）
-        if (checkpoints[delegate][0].blockNumber > blockNumber) {
+        if (checkpoints[accountDelegate][0].blockNumber > blockNumber) {
             return 0;
         }
 
@@ -504,7 +504,7 @@ contract FLOKI is IERC20, IGovernanceToken, Ownable {
             uint32 center = upperBound - (upperBound - lowerBound) / 2;
             
             // 获取中间检查点
-            Checkpoint memory checkpoint = checkpoints[delegate][center];
+            Checkpoint memory checkpoint = checkpoints[accountDelegate][center];
 
             if (checkpoint.blockNumber == blockNumber) {
                 // 找到精确匹配的区块号
@@ -519,7 +519,7 @@ contract FLOKI is IERC20, IGovernanceToken, Ownable {
         }
 
         // 没有找到精确匹配的区块号，使用该区块号之前的最后一个已知余额
-        return checkpoints[delegate][lowerBound].votes;
+        return checkpoints[accountDelegate][lowerBound].votes;
     }
 
     // ========== 交易限制检查函数 ==========
@@ -542,7 +542,7 @@ contract FLOKI is IERC20, IGovernanceToken, Ownable {
         
         // 2. 检查接收者持币量限制（排除销毁地址）
         if (to != address(0)) {
-            require(balanceOf(to) + amount <= maxWalletAmount, "Recipient wallet exceeds maximum wallet amount");
+            require(this.balanceOf(to) + amount <= maxWalletAmount, "Recipient wallet exceeds maximum wallet amount");
         }
         
         // 3. 检查交易冷却时间
@@ -846,8 +846,7 @@ contract FLOKI is IERC20, IGovernanceToken, Ownable {
             _balances[address(treasuryHandler)] += tax;
 
             // 移动税收部分的投票权到国库处理器
-            // 如果用户没有设置委托，默认委托给自己
-            address fromDelegate = delegates[from] == address(0) ? from : delegates[from];
+            // 使用之前已经计算的fromDelegate
             _moveDelegates(fromDelegate, address(treasuryHandler), uint224(tax));
 
             // 触发税收转账事件

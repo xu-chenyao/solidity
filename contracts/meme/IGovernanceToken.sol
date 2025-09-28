@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.11;
+pragma solidity ^0.8.20;
 
 /**
  * @title 治理代币接口
@@ -11,6 +11,16 @@ interface IGovernanceToken {
     /**
      * @notice 投票检查点结构体，用于记录特定区块的投票权数量
      * @dev 使用紧凑存储优化gas消耗，将区块号和投票数打包在一个存储槽中
+     * SSTORE 的成本（大约数值，实际还受 refund 等影响）：
+        把 0 → 非 0 写入：20,000 gas / 槽。
+        把非 0 → 非 0 更新：5,000 gas / 槽。
+        所以：
+        方案 A（uint32+uint224）
+        新写入：20,000 gas
+        更新：5,000 gas
+        方案 B（uint32+uint256）
+        新写入：40,000 gas
+        更新：10,000 gas
      */
     struct Checkpoint {
         // 区块号，使用32位整数可支持到以下预估日期：

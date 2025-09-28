@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: MIT
-pragma solidity 0.8.11;
+pragma solidity ^0.8.20;
 
 /**
  * @title 流动性池接口
@@ -79,6 +79,13 @@ interface ILiquidityPool {
      * @return ethReserve ETH储备量
      */
     function getReserves() external view returns (uint256 tokenReserve, uint256 ethReserve);
+    
+    /**
+     * @notice 获取指定地址的LP代币余额
+     * @param account 要查询的地址
+     * @return balance LP代币余额
+     */
+    function getLPBalance(address account) external view returns (uint256 balance);
     
     // ========== 事件定义 ==========
     

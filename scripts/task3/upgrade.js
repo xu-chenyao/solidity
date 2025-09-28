@@ -104,7 +104,7 @@ async function main() {
       console.log("  符号:", await currentNFT.symbol());
       console.log("  拥有者:", await currentNFT.owner());
       
-      // 获取新的合约工厂（这里使用相同的合约，实际升级时会是新版本）
+      // 获取新的合约工厂
       const AuctionNFTV2 = await ethers.getContractFactory("AuctionNFTV2");
       
       console.log("正在验证升级兼容性...");
@@ -119,6 +119,7 @@ async function main() {
       console.log("✅ 升级兼容性验证通过");
       
       console.log("正在执行升级...");
+      // 🔧 修复：使用地址字符串而不是合约对象
       const upgradedNFT = await upgrades.upgradeProxy(deploymentInfo.contracts.auctionNFT, AuctionNFTV2);
       await upgradedNFT.waitForDeployment();
       

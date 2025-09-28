@@ -1,4 +1,5 @@
 require("@nomicfoundation/hardhat-toolbox");
+require("@openzeppelin/hardhat-upgrades");
 require("dotenv").config();
 require("hardhat-gas-reporter");
 
@@ -17,6 +18,26 @@ module.exports = {
           metadata: {
             bytecodeHash: "ipfs"
           },
+        },
+      },
+      {
+        version: "0.8.20",
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          },
+          evmVersion: "london",
+        },
+      },
+      {
+        version: "0.8.11",
+        settings: {
+          optimizer: {
+            enabled: true,
+            runs: 200,
+          },
+          evmVersion: "london",
         },
       },
     ]
