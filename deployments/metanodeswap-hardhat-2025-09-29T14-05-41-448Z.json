@@ -1,0 +1,46 @@
+{
+  "network": "hardhat",
+  "chainId": "31337",
+  "deployer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+  "timestamp": "2025-09-29T14:05:41.269Z",
+  "contracts": {
+    "token0": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+    "token1": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512",
+    "poolManager": "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0",
+    "swapRouter": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9",
+    "positionManager": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9",
+    "examplePool": "0x6955f3e30651B683097A8060901e841a4f1c10f6"
+  },
+  "transactions": [
+    {
+      "name": "TestToken A",
+      "hash": "0xc497036808fb491a04e8ca999d0c1ae1cc4bc73d58f3e4b70925ccadbb1a63ae",
+      "address": "0x5FbDB2315678afecb367f032d93F642f64180aa3"
+    },
+    {
+      "name": "TestToken B",
+      "hash": "0x34b7dd3c8e146f94f9f5e197a504f78aced47a9637dce3d69c8a9f8eb615d786",
+      "address": "0xe7f1725E7734CE288F8367e1Bb143E90bb3F0512"
+    },
+    {
+      "name": "PoolManager",
+      "hash": "0xe97353a357ae9b97ab9472c33c541356a857e3ef09613eeecdc95cdc75c022a6",
+      "address": "0x9fE46736679d2D9a65F0992F2272dE9f3c7fa6e0"
+    },
+    {
+      "name": "SwapRouter",
+      "hash": "0x7ee5497de95190f4679f7cae12bc304b7878c04dbc139572e86739b4c3a87348",
+      "address": "0xCf7Ed3AccA5a467e9e704C703E8D87F634fB0Fc9"
+    },
+    {
+      "name": "PositionManager",
+      "hash": "0x2e9a4d3d4311fcfa1ae5d24d8fa3ec5832359908cd62098c71c6c32fd3728eb3",
+      "address": "0xDc64a140Aa3E981100a9becA4E685f962f0cF6C9"
+    },
+    {
+      "name": "Example Pool Creation",
+      "hash": "0xed4a7c547872f74f74f79b1e9c47767c14bb24e4344cb793a34e050686321ecf",
+      "address": "0x6955f3e30651B683097A8060901e841a4f1c10f6"
+    }
+  ]
+}

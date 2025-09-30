@@ -11,6 +11,7 @@ module.exports = {
         version: "0.8.28",
         settings: {
           optimizer: {
+            // enabled: false,
             enabled: true,
             runs: 200,
           },
@@ -34,8 +35,9 @@ module.exports = {
         version: "0.8.11",
         settings: {
           optimizer: {
-            enabled: true,
-            runs: 200,
+            enabled: false,
+            // enabled: true,
+            // runs: 200,
           },
           evmVersion: "london",
         },

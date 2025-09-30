@@ -1,0 +1,13 @@
+{
+  "network": "hardhat",
+  "chainId": "31337",
+  "deployer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+  "timestamp": "2025-09-29T14:03:38.642Z",
+  "contracts": {},
+  "transactions": [],
+  "error": {
+    "message": "HH701: There are multiple artifacts for contract \"TestToken\", please use a fully qualified name.\n\nPlease replace TestToken for one of these options wherever you are trying to read its artifact:\n\ncontracts/Base2_Solidity_Dex/swap-contract/MetaNodeSwap/test-contracts/TestToken.sol:TestToken\ncontracts/task3/TestToken.sol:TestToken\n",
+    "stack": "HardhatError: HH701: There are multiple artifacts for contract \"TestToken\", please use a fully qualified name.\n\nPlease replace TestToken for one of these options wherever you are trying to read its artifact:\n\ncontracts/Base2_Solidity_Dex/swap-contract/MetaNodeSwap/test-contracts/TestToken.sol:TestToken\ncontracts/task3/TestToken.sol:TestToken\n\n    at Artifacts._getArtifactPathFromFiles (/Users/xuchenyao/solidity/node_modules/hardhat/src/internal/artifacts.ts:860:13)\n    at Artifacts._getArtifactPath (/Users/xuchenyao/solidity/node_modules/hardhat/src/internal/artifacts.ts:516:21)\n    at Artifacts.readArtifact (/Users/xuchenyao/solidity/node_modules/hardhat/src/internal/artifacts.ts:71:26)\n    at getContractFactory (/Users/xuchenyao/solidity/node_modules/@nomicfoundation/hardhat-ethers/src/internal/helpers.ts:120:22)\n    at main (/Users/xuchenyao/solidity/scripts/Base2_Solidity_Dex/deploy-dex.js:43:31)",
+    "timestamp": "2025-09-29T14:03:38.662Z"
+  }
+}

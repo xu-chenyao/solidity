@@ -1,0 +1,13 @@
+{
+  "network": "hardhat",
+  "chainId": "31337",
+  "deployer": "0xf39Fd6e51aad88F6F4ce6aB8827279cffFb92266",
+  "timestamp": "2025-09-29T14:04:09.129Z",
+  "contracts": {},
+  "transactions": [],
+  "error": {
+    "message": "incorrect number of arguments to constructor",
+    "stack": "Error: incorrect number of arguments to constructor\n    at ContractFactory.getDeployTransaction (/Users/xuchenyao/solidity/node_modules/ethers/src.ts/contract/factory.ts:87:19)\n    at ContractFactory.deploy (/Users/xuchenyao/solidity/node_modules/ethers/src.ts/contract/factory.ts:105:31)\n    at main (/Users/xuchenyao/solidity/scripts/Base2_Solidity_Dex/deploy-dex.js:48:44)",
+    "timestamp": "2025-09-29T14:04:09.271Z"
+  }
+}
